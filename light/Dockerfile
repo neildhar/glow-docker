@@ -1,18 +1,15 @@
 FROM ubuntu:18.04
 
-### Arguments ###
-ARG USERNAME=glow
-ARG WORKDIR=/home/$USERNAME
+ARG WORKDIR=/home/root/dev
 
-# Create user glow
-RUN useradd -m $USERNAME
-
+# Create working folder
+RUN mkdir -p $WORKDIR
 WORKDIR $WORKDIR
 
 # Update and install tools
 RUN apt-get update && apt-get install -y clang clang-8 cmake graphviz libpng-dev \
     libprotobuf-dev llvm-8 llvm-8-dev ninja-build protobuf-compiler wget \
-    opencl-headers libgoogle-glog-dev git sudo \
+    opencl-headers libgoogle-glog-dev git python-numpy \
     && \
     # Clear apt caches to reduce image size
     rm -rf /var/lib/apt/lists/*
@@ -26,6 +23,3 @@ RUN update-alternatives --install /usr/bin/clang clang \
 # Point default C/C++ compiler to clang
 RUN update-alternatives --set cc /usr/bin/clang && \
     update-alternatives --set c++ /usr/bin/clang++
-
-USER $USERNAME
-RUN mkdir /home/$USERNAME/dev
