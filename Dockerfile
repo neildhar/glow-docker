@@ -29,5 +29,3 @@ RUN update-alternatives --set cc /usr/bin/clang && \
 
 USER $USERNAME
 RUN mkdir /home/$USERNAME/dev
-
-CMD ["/bin/bash"]
