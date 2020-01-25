@@ -1,7 +1,6 @@
 # Glow Docker image (light)
 This is essentially just a lightweight wrapper containing all of the dependencies needed to build glow.
 ## Running container
-
 1. Clone glow repository to some `/my/path/glow`
 2. Create `/my/path/build_Debug` and `/my/path/build_Release`
 3. Run container using
