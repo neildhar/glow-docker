@@ -23,3 +23,13 @@ RUN update-alternatives --install /usr/bin/clang clang \
 # Point default C/C++ compiler to clang
 RUN update-alternatives --set cc /usr/bin/clang && \
     update-alternatives --set c++ /usr/bin/clang++
+
+# Install fmt
+RUN git clone https://github.com/fmtlib/fmt && \
+    mkdir fmt/build && \
+    cd fmt/build && \
+    cmake .. && make && \
+    make install
+
+# Clean up
+RUN rm -rf fmt
