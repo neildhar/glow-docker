@@ -9,7 +9,8 @@ WORKDIR $WORKDIR
 # Update and install tools
 RUN apt-get update && apt-get install -y clang clang-8 cmake graphviz libpng-dev \
     libprotobuf-dev llvm-8 llvm-8-dev ninja-build protobuf-compiler wget \
-    opencl-headers libgoogle-glog-dev git python-numpy && \
+    opencl-headers libgoogle-glog-dev git python-numpy libboost-all-dev \
+    libdouble-conversion-dev libevent-dev libssl-dev && \
     apt-get clean && \
     # Clear apt caches to reduce image size
     rm -rf /var/lib/apt/lists/*
