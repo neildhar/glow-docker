@@ -12,6 +12,7 @@ RUN mkdir build_$BUILDTYPE && cd build_$BUILDTYPE && \
     ninja all
 
 RUN if [ $BUILDTYPE = "Release" ]; then \
+        cd build_Release; \
         python ../glow/utils/download_datasets_and_models.py --all-datasets; \
     fi
 
