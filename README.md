@@ -1,5 +1,6 @@
 # Glow Docker image
-
+![Docker Hub Builds](https://img.shields.io/docker/cloud/build/neildhar/glow)
+![Docker Pulls](https://img.shields.io/docker/pulls/neildhar/glow)
 ## Light
 Small image providing dependencies. Run container using:
 
