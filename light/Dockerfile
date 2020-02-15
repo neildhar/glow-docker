@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y clang clang-8 cmake graphviz libpng-dev
     opencl-headers libgoogle-glog-dev git python-numpy libboost-all-dev \
     libdouble-conversion-dev libevent-dev libssl-dev libgflags-dev \
     libjemalloc-dev libpthread-stubs0-dev && \
+    apt-get autoremove -y llvm-6.0 && \
     apt-get clean && \
     # Clear apt caches to reduce image size
     rm -rf /var/lib/apt/lists/*
