@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ARG WORKDIR=/home/root/dev
+ARG WORKDIR=/root/dev
 
 # Create working folder
 RUN mkdir -p $WORKDIR

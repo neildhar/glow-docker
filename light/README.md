@@ -6,10 +6,10 @@ This is essentially just a lightweight wrapper containing all of the dependencie
 2. Create `/my/path/build_Debug` and `/my/path/build_Release`
 3. Run container using
 ```bash
-docker run -it -v /my/path/:/home/root/dev neildhar/glow:light
+docker run -it -v /my/path/:/root/dev neildhar/glow:light
 ```
 
-Use the shell to build glow in the `/home/root/dev` folder as you normally would. All dependencies should already be satisfied. 
+Use the shell to build glow in the `/root/dev` folder as you normally would. All dependencies should already be satisfied. 
 
 If you want an additional shell to access the container, run `docker ps` to find the container name and then run `docker exec -it container_name /bin/bash`.
 

@@ -4,7 +4,7 @@
 ## Light
 Small image providing dependencies. Run container using:
 
-```docker run -it -v /my/path/:/home/root/dev neildhar/glow:light```
+```docker run -it -v /my/path/:/root/dev neildhar/glow:light```
 
 More details [here](light/README.md).
 
