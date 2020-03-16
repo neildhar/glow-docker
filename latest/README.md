@@ -6,7 +6,7 @@ This is essentially just a lightweight wrapper containing all of the dependencie
 2. Create `/my/path/build_Debug` and `/my/path/build_Release`
 3. Run container using
 ```bash
-docker run -it -v /my/path/:/root/dev neildhar/glow:light
+docker run -it -v /my/path/:/root/dev neildhar/glow
 ```
 
 Use the shell to build glow in the `/root/dev` folder as you normally would. All dependencies should already be satisfied. 
@@ -18,5 +18,5 @@ Note that this will mount the local glow source folder into the docker container
 ## Building container
 If you'd like to build the container yourself, run:
 ```bash
-docker build -t neildhar/glow:light .
+docker build -t neildhar/glow .
 ```

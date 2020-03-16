@@ -1,0 +1,64 @@
+name: build
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+
+  # Run tests for any PRs.
+  pull_request:
+
+jobs:
+  latest:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: neildhar/glow
+      TARGETPLATFORM: linux/arm64
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup environment and build
+        run: |
+          cd latest
+          docker build -t ${IMAGE_NAME} .
+      - name: Push image
+        if: github.event_name == 'push'
+        run: |
+          echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u neildhar --password-stdin
+          docker push ${IMAGE_NAME}
+
+  precompiled-release:
+    runs-on: ubuntu-latest
+    needs: latest
+    env:
+      IMAGE_NAME: neildhar/glow:precompiled-release
+      BUILD_TYPE: Release
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup environment and build
+        run: |
+          cd precompiled
+          docker build --build-arg BUILD_TYPE=BUILD_TYPE -t neildhar/glow:precompiled-release .
+      - name: Push image
+        if: github.event_name == 'push'
+        run: |
+          echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u neildhar --password-stdin
+          docker push ${IMAGE_NAME}
+
+  precompiled-debug:
+    runs-on: ubuntu-latest
+    needs: latest
+    env:
+      IMAGE_NAME: neildhar/glow:precompiled-debug
+      BUILD_TYPE: Debug
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup environment and build
+        run: |
+          cd precompiled
+          docker build --build-arg BUILD_TYPE=${BUILD_TYPE} -t ${IMAGE_NAME} .
+      - name: Push image
+        if: github.event_name == 'push'
+        run: |
+          echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u neildhar --password-stdin
+          docker push ${IMAGE_NAME}
