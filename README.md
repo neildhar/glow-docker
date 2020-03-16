@@ -1,12 +1,12 @@
 # Glow Docker image
-![Docker Hub Builds](https://img.shields.io/docker/cloud/build/neildhar/glow)
+![](https://github.com/neildhar/glow-docker/workflows/build/badge.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/neildhar/glow)
-## Light
+## Latest
 Small image providing dependencies. Run container using:
 
-```docker run -it -v /my/path/:/root/dev neildhar/glow:light```
+```docker run -it -v /my/path/:/root/dev neildhar/glow```
 
-More details [here](light/README.md).
+More details [here](latest/README.md).
 
 ## Precompiled
 Image containing fully compiled Glow repository. Run container using:

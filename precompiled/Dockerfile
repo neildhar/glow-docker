@@ -1,16 +1,16 @@
-FROM neildhar/glow:light
+FROM neildhar/glow
 
 ## Clone glow repo
 RUN git clone https://github.com/pytorch/glow.git && \
     cd glow && git submodule update --init --recursive
 
 ## Build release or debug version depending on build arg
-ARG BUILDTYPE
+ARG BUILD_TYPE
 
-RUN mkdir build_${BUILDTYPE} && cd build_${BUILDTYPE} && \
-    cmake -G Ninja -DCMAKE_BUILD_TYPE=${BUILDTYPE} ../glow && \
+RUN mkdir build_${BUILD_TYPE} && cd build_${BUILD_TYPE} && \
+    cmake -G Ninja -DCMAKE_BUILD_TYPE=${BUILD_TYPE} ../glow && \
     ninja all && \
-    if [ ${BUILDTYPE} = "Release" ]; then \
+    if [ ${BUILD_TYPE} = "Release" ]; then \
         python ../glow/utils/download_datasets_and_models.py --all-datasets; \
     fi
 
