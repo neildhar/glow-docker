@@ -56,6 +56,7 @@ jobs:
       - name: Setup environment and build
         run: |
           cd precompiled
+          docker system prune -a -f
           docker build --build-arg BUILD_TYPE=${BUILD_TYPE} -t ${IMAGE_NAME} .
       - name: Push image
         if: github.event_name == 'push'
