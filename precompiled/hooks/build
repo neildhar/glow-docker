@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ "$DOCKER_TAG" = "precompiled-release" ]; then
+    BUILDTYPE="Release"
+elif [ "$DOCKER_TAG" = "precompiled-debug" ]; then
+    BUILDTYPE="Debug"
+else
+    echo "invalid tag"
+    exit 1
+fi
+
+docker build --build-arg BUILDTYPE=$BUILDTYPE -f $DOCKERFILE_PATH -t $IMAGE_NAME .
